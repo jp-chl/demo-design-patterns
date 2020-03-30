@@ -37,7 +37,7 @@ public class ZipCollectionUnitTest {
                 .mapToObj(i -> names.get(i) + ":" + ages.get(i))
                 .collect(Collectors.toList());
 
-        assertEquals(output, expectedOutput);
+        assertEquals(expectedOutput, output);
     } // end void zipCollectionUsignIntStream()
 
     @Test
@@ -47,7 +47,7 @@ public class ZipCollectionUnitTest {
             .of("John", "Jane", "Jack")
             .zip(Seq.of(24, 25, 27), (x, y) -> x + ":" + y);
 
-        assertEquals(output.toList(), expectedOutput);
+        assertEquals(expectedOutput, output.toList());
     } // end void zipCollectionUsingJool()
 
     @Test
@@ -63,7 +63,7 @@ public class ZipCollectionUnitTest {
 
         List<Tuple2> innerExpectedOutput = Arrays.asList(element1, element2, element3);
 
-        assertEquals(output.collect(Collectors.toList()), innerExpectedOutput);
+        assertEquals(innerExpectedOutput, output.collect(Collectors.toList()));
     } // end void zipCollectionsUsingJoolTuple()
 
     @Test
@@ -79,6 +79,6 @@ public class ZipCollectionUnitTest {
 
         List<Tuple2> innerExpectedOutput = Arrays.asList(element1, element2, element3);
 
-        assertEquals(output.collect(Collectors.toList()), innerExpectedOutput);
+        assertEquals(innerExpectedOutput, output.collect(Collectors.toList()));
     } // end void zipCollectionsUsingJoolWithIndex()
 } // end class ZipCollectionUnitTest
