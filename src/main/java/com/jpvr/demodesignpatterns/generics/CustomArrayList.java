@@ -4,7 +4,7 @@ import java.util.AbstractList;
 
 public class CustomArrayList<T> extends AbstractList<T> {
 
-    private T[] values;
+    private Object[] values;
 
     public CustomArrayList() {
 
@@ -14,7 +14,7 @@ public class CustomArrayList<T> extends AbstractList<T> {
     @Override
     public boolean add(T o) {
 
-        T[] newValues = (T[]) new Object[size() + 1];
+        Object[] newValues = new Object[size() + 1];
         for(int i=0; i<size(); i++) {
             newValues[i] = values[i];
         }
@@ -27,7 +27,7 @@ public class CustomArrayList<T> extends AbstractList<T> {
 
     @Override
     public T get(int index) {
-        return values[index];
+        return (T) values[index];
     }
 
     @Override
