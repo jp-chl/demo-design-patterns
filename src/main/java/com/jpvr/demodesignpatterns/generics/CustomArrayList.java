@@ -2,19 +2,19 @@ package com.jpvr.demodesignpatterns.generics;
 
 import java.util.AbstractList;
 
-public class CustomArrayList extends AbstractList {
+public class CustomArrayList<T> extends AbstractList<T> {
 
-    private Object[] values;
+    private T[] values;
 
     public CustomArrayList() {
 
-        values = new Object[0];
+        values = (T[]) new Object[0];
     }
 
     @Override
-    public boolean add(Object o) {
+    public boolean add(T o) {
 
-        Object[] newValues = new Object[size() + 1];
+        T[] newValues = (T[]) new Object[size() + 1];
         for(int i=0; i<size(); i++) {
             newValues[i] = values[i];
         }
@@ -26,7 +26,7 @@ public class CustomArrayList extends AbstractList {
     }
 
     @Override
-    public Object get(int index) {
+    public T get(int index) {
         return values[index];
     }
 
