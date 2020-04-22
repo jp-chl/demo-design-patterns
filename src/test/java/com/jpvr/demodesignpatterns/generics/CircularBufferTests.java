@@ -9,6 +9,20 @@ public class CircularBufferTests {
     private CircularBuffer buffer = new CircularBuffer(2);
 
     @Test
+    public void shouldConcatenateBufferElements() {
+
+        CircularBuffer<String> myBuffer = new CircularBuffer<String>(10);
+
+        myBuffer.offer("a");
+        myBuffer.offer("bc");
+        myBuffer.offer("d");
+
+        String value = concatenate(myBuffer);
+
+        System.out.println(value);
+    } // fin void shouldConcatenateBufferElements()
+
+    @Test
     public void shouldOfferPollableElement() {
 
         Assertions.assertTrue(buffer.offer(1));
@@ -40,4 +54,16 @@ public class CircularBufferTests {
         Assertions.assertEquals(2, buffer.poll());
         Assertions.assertEquals(3, buffer.poll());
     } // end void shouldRecycleBuffer()
+
+    private String concatenate(CircularBuffer buffer) {
+
+        StringBuilder result = new StringBuilder();
+
+        String value;
+        while( (value = (String) buffer.poll() ) != null ) {
+            result.append(value);
+        }
+
+        return result.toString();
+    } // end String concatenate(CircularBuffer buffer)
 } // end class CircularBufferTests
