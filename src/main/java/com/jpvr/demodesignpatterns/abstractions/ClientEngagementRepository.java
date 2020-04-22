@@ -1,6 +1,6 @@
 package com.jpvr.demodesignpatterns.abstractions;
 
-public interface ClientEngagementRepository {
+public interface ClientEngagementRepository extends AutoCloseable {
 
     int NO_ID = 0;
 
