@@ -1,6 +1,6 @@
 package com.jpvr.demodesignpatterns.generics.typebounds;
 
-public class SortedPair<T extends Comparable> {
+public class SortedPair<T extends Comparable<T>> {
 
     private final T first;
     private final T second;

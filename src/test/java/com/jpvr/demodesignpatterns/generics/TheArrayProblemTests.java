@@ -15,6 +15,20 @@ public class TheArrayProblemTests {
 
 
     @Test
+    public void shouldGetCustomArrayListElements() {
+
+        List arrayList = new CustomArrayList();
+        arrayList.add(0);
+        arrayList.add(1);
+        arrayList.add(2);
+
+        System.out.println("arrayList(0) = " + arrayList.get(0));
+        System.out.println("arrayList(1) = " + arrayList.get(1));
+        System.out.println("arrayList(2) = " + arrayList.get(2));
+    } // end void shouldGetCustomArrayListElements()
+
+
+    @Test
     public void shouldSortListElements() {
 
         Person donDraper = new Person("Don Draper", 89);
