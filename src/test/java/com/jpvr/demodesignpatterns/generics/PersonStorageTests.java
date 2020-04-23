@@ -35,6 +35,20 @@ public class PersonStorageTests {
     } // end setup()
 
     @Test
+    public void test() {
+
+        //List<? extends Person> people = new ArrayList<>();
+        List<? extends Person> people = new ArrayList<>();
+        //people.add(new Partner("jp", 10));
+        //people.add(new Person("es", 20));
+        people.add(null);
+
+        final Person person1 = people.get(0);
+
+        String a = null;
+    } // end
+
+    @Test
     public void savesAndLoadsPerson() throws Exception {
 
         Person person = new Person("Bob", 20);
