@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Apr 23 18:17:50 CLT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-0171-a91e-58ac-00000be58728 
+on database directory memory:/Users/juanvera/Dropbox/personal/Developer/Spring/MAC/tmp/demo-design-patterns/codejava/webdb with class loader sun.misc.Launcher$AppClassLoader@18b4aac2 
+Loaded from file:/Users/juanvera/.m2/repository/org/apache/derby/derby/10.13.1.1/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_211-b12
+user.dir=/Users/juanvera/Dropbox/personal/Developer/Spring/MAC/tmp/demo-design-patterns
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.15.4
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
