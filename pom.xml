@@ -49,13 +49,21 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Singleton tests -->
+        <!-- Simple in memory DB tests -->
         <dependency>
             <groupId>org.apache.derby</groupId>
             <artifactId>derby</artifactId>
             <version>10.13.1.1</version>
         </dependency>
-        <!-- Singleton tests -->
+        <!-- Simple in memory DB tests -->
+
+        <!-- Unofficial Twitter API -->
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>[4.0,)</version>
+        </dependency>
+        <!-- Unofficial Twitter API -->
 
         <!--
         <dependency>
