@@ -30,12 +30,12 @@ public class SingletonTests {
     @Test
     public void dbSingletonDemo() {
 
-        DbSingleton instance = DbSingleton.getInstance();
+        SingletonDb instance = SingletonDb.getInstance();
         //DbSingleton testConst = new DbSingleton();
 
         System.out.println(instance);
 
-        DbSingleton anotherInstance = DbSingleton.getInstance();
+        SingletonDb anotherInstance = SingletonDb.getInstance();
 
         System.out.println(anotherInstance);
     } // end void dbSingletonDemo() {
@@ -43,7 +43,7 @@ public class SingletonTests {
     @Test
     public void shouldCreateOnlyOneDBConnection() {
 
-        DbSingleton instance = DbSingleton.getInstance();
+        SingletonDb instance = SingletonDb.getInstance();
 
         long timeBefore = System.nanoTime();
         Connection conn = instance.getConnection();

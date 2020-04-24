@@ -4,14 +4,14 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DbSingleton {
+public class SingletonDb {
 
     // Lazily loaded, and thread safe (volatile)
-    private static volatile DbSingleton instance = null;
+    private static volatile SingletonDb instance = null;
 
     private static volatile Connection conn = null;
 
-    private DbSingleton() {
+    private SingletonDb() {
 
         try {
 
@@ -34,17 +34,17 @@ public class DbSingleton {
     } // end private DbSingleton()
 
     // Thread safe version
-    public static DbSingleton getInstance() {
+    public static SingletonDb getInstance() {
 
         if ( instance == null ) {
 
             // rather than synchronized the method,
             // much more efficient to do it here
-            synchronized (DbSingleton.class) {
+            synchronized (SingletonDb.class) {
 
                 if ( instance == null ) {
 
-                    instance = new DbSingleton();
+                    instance = new SingletonDb();
                 }
             } // end synchronized
         } // end if ( instance == null )
@@ -56,7 +56,7 @@ public class DbSingleton {
 
         if ( conn == null) {
 
-            synchronized (DbSingleton.class) {
+            synchronized (SingletonDb.class) {
 
                 if ( conn == null) {
 
