@@ -21,21 +21,27 @@ public class Menu extends MenuComponent {
         while (iterator.hasNext()) {
 
             MenuComponent menuComponent = iterator.next();
+
+            // hierarchy
+            menuComponent.url = this.url + menuComponent.url;
+
             builder.append(menuComponent.toString());
         } // end iteration
 
         return builder.toString();
     } // end String toString()
 
+    @Override
     public MenuComponent add(MenuComponent menuComponent) {
 
         menuComponents.add(menuComponent);
         return menuComponent;
-    } // end
+    } // end MenuComponent add(MenuComponent menuComponent)
 
+    @Override
     public MenuComponent remove(MenuComponent menuComponent) {
 
         menuComponents.remove(menuComponent);
         return menuComponent;
-    } // end
+    } // end MenuComponent remove(MenuComponent menuComponent)
 } // end class Menu

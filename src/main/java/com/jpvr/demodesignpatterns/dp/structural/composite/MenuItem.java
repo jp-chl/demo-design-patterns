@@ -11,6 +11,13 @@ public class MenuItem extends MenuComponent {
 
     @Override
     public String toString() {
-        return print(this);
+
+        StringBuilder builder = new StringBuilder();
+
+        builder.append(print(this));
+
+        return builder.toString();
+
+        //return print(this);
     } // end String toString()
 } // end class MenuItem extends MenuComponent
