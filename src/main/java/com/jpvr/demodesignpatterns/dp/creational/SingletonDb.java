@@ -52,13 +52,13 @@ public class SingletonDb {
     } // end static DbSingleton getInstance()
 
     // public for the sake of style
-    public Connection getConnection() {
+    public Connection getConnection() throws SQLException {
 
-        if ( conn == null) {
+        if ( conn == null || conn.isClosed() ) {
 
             synchronized (SingletonDb.class) {
 
-                if ( conn == null) {
+                if ( conn == null || conn.isClosed() ) {
 
                     try {
 

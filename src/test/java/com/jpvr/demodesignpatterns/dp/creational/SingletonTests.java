@@ -41,7 +41,7 @@ public class SingletonTests {
     } // end void dbSingletonDemo() {
 
     @Test
-    public void shouldCreateOnlyOneDBConnection() {
+    public void shouldCreateOnlyOneDBConnection() throws SQLException {
 
         SingletonDb instance = SingletonDb.getInstance();
 
