@@ -1,4 +1,4 @@
-package com.jpvr.demodesignpatterns.dp.structural;
+package com.jpvr.demodesignpatterns.dp.structural.adapter;
 
 public class EmployeeDB implements Employee {
 

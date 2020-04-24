@@ -1,5 +1,7 @@
 package com.jpvr.demodesignpatterns.dp.structural;
 
+import com.jpvr.demodesignpatterns.dp.structural.adapter.Employee;
+import com.jpvr.demodesignpatterns.dp.structural.adapter.EmployeeClient;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
