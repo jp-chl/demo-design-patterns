@@ -31,12 +31,6 @@ public class CompositeTests {
         System.out.println(secAttributes);
     } // end void javaMapTests()
 
-    /**
-     * Main: /main
-     *  Safety: /safety
-     *  Claims: /claims
-     *    Personal Claim: /personalClaims
-     */
     @Test
     public void compositeMenuTests() {
 
