@@ -1,6 +1,11 @@
 package com.jpvr.demodesignpatterns.dp.structural;
 
+import com.jpvr.demodesignpatterns.dp.structural.bridge.*;
 import com.jpvr.demodesignpatterns.dp.structural.shape1.*;
+import com.jpvr.demodesignpatterns.dp.structural.shape2.Blue;
+import com.jpvr.demodesignpatterns.dp.structural.shape2.Color;
+import com.jpvr.demodesignpatterns.dp.structural.shape2.Green;
+import com.jpvr.demodesignpatterns.dp.structural.shape2.Red;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -36,7 +41,7 @@ public class BridgeTests {
     } // end void testDBDriver()
 
     @Test
-    public void Shape1BridgeTest() {
+    public void Shape1NotBridgeTest() {
 
         Circle circle = new BlueCircle();
 
@@ -47,6 +52,44 @@ public class BridgeTests {
         circle.applyColor();
         square.applyColor();
         greenSquare.applyColor();
-    } // end void Shape1BridgeTest()
+    } // end void Shape1NotBridgeTest()
 
+    @Test
+    public void Shape2BridgeTest() {
+
+        Color blue = new Blue();
+
+        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape square = new com.jpvr.demodesignpatterns.dp.structural.shape2.Square(blue);
+
+        Color red = new Red();
+
+        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape circle = new com.jpvr.demodesignpatterns.dp.structural.shape2.Circle(red);
+
+        Color green = new Green();
+        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape greenCircle = new com.jpvr.demodesignpatterns.dp.structural.shape2.Circle(green);
+
+        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape greenSquare = new com.jpvr.demodesignpatterns.dp.structural.shape2.Square(green);
+
+        square.applyColor();
+        circle.applyColor();
+        greenCircle.applyColor();
+        greenSquare.applyColor();
+    } // end void Shape2BridgeTest()
+
+    @Test
+    public void shouldCreateMovieTest() {
+
+        Movie movie = new Movie();
+        movie.setClasification("Action");
+        movie.setTitle("John Wick");
+        movie.setRuntime("2:15");
+        movie.setYear("2014");
+
+        Formatter printFormatter = new PrintFormatter();
+        Printer moviePrinter = new MoviePrinter(movie);
+
+        String printedMaterial = moviePrinter.print(printFormatter);
+
+        System.out.println(printedMaterial);
+    } // end
 } // end class BridgeTests
