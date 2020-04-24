@@ -1,4 +1,4 @@
-package com.jpvr.demodesignpatterns.dp.structural.shape2;
+package com.jpvr.demodesignpatterns.dp.structural.bridge.shape2;
 
 public abstract class Shape {
 

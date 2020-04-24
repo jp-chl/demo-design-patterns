@@ -1,6 +1,4 @@
-package com.jpvr.demodesignpatterns.dp.structural.shape1;
-
-import com.jpvr.demodesignpatterns.dp.structural.shape1.Circle;
+package com.jpvr.demodesignpatterns.dp.structural.bridge.shape1;
 
 public class BlueCircle extends Circle {
 

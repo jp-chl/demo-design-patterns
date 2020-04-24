@@ -1,11 +1,11 @@
 package com.jpvr.demodesignpatterns.dp.structural;
 
 import com.jpvr.demodesignpatterns.dp.structural.bridge.*;
-import com.jpvr.demodesignpatterns.dp.structural.shape1.*;
-import com.jpvr.demodesignpatterns.dp.structural.shape2.Blue;
-import com.jpvr.demodesignpatterns.dp.structural.shape2.Color;
-import com.jpvr.demodesignpatterns.dp.structural.shape2.Green;
-import com.jpvr.demodesignpatterns.dp.structural.shape2.Red;
+import com.jpvr.demodesignpatterns.dp.structural.bridge.shape1.*;
+import com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Blue;
+import com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Color;
+import com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Green;
+import com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Red;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -59,16 +59,16 @@ public class BridgeTests {
 
         Color blue = new Blue();
 
-        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape square = new com.jpvr.demodesignpatterns.dp.structural.shape2.Square(blue);
+        com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Shape square = new com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Square(blue);
 
         Color red = new Red();
 
-        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape circle = new com.jpvr.demodesignpatterns.dp.structural.shape2.Circle(red);
+        com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Shape circle = new com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Circle(red);
 
         Color green = new Green();
-        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape greenCircle = new com.jpvr.demodesignpatterns.dp.structural.shape2.Circle(green);
+        com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Shape greenCircle = new com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Circle(green);
 
-        com.jpvr.demodesignpatterns.dp.structural.shape2.Shape greenSquare = new com.jpvr.demodesignpatterns.dp.structural.shape2.Square(green);
+        com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Shape greenSquare = new com.jpvr.demodesignpatterns.dp.structural.bridge.shape2.Square(green);
 
         square.applyColor();
         circle.applyColor();

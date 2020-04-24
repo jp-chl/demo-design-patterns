@@ -1,4 +1,4 @@
-package com.jpvr.demodesignpatterns.dp.structural.shape1;
+package com.jpvr.demodesignpatterns.dp.structural.bridge.shape1;
 
 public class RedCircle extends Circle {
 
