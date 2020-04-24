@@ -1,9 +1,6 @@
 package com.jpvr.demodesignpatterns.dp.behavioral;
 
-import com.jpvr.demodesignpatterns.dp.behavioral.command.Command;
-import com.jpvr.demodesignpatterns.dp.behavioral.command.Light;
-import com.jpvr.demodesignpatterns.dp.behavioral.command.OnCommand;
-import com.jpvr.demodesignpatterns.dp.behavioral.command.Switch;
+import com.jpvr.demodesignpatterns.dp.behavioral.command.*;
 import org.junit.jupiter.api.Test;
 
 public class CommandTests {
@@ -15,8 +12,13 @@ public class CommandTests {
         Switch lightSwitch = new Switch(); // invoker
 
         Command onCommand = new OnCommand(light); // command
-
         lightSwitch.storeAndExecute(onCommand);
+
+        Command toggleCommand = new ToggleCommand(light);
+        lightSwitch.storeAndExecute(toggleCommand);
+        lightSwitch.storeAndExecute(toggleCommand);
+        lightSwitch.storeAndExecute(toggleCommand);
+
     } // end void commandTest()
 
 
