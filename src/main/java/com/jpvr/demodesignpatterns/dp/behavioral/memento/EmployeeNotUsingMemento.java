@@ -1,10 +1,10 @@
-package com.jpvr.demodesignpatterns.dp.structural.mediator;
+package com.jpvr.demodesignpatterns.dp.behavioral.memento;
 
 import java.io.*;
 
 // originator
 //@SuppressWarnings("serial")
-public class Employee implements Serializable {
+public class EmployeeNotUsingMemento implements Serializable {
 
     private static final String SERIALIZABLE_PATH = "/tmp/employee.ser";
 
@@ -45,31 +45,31 @@ public class Employee implements Serializable {
                 '}';
     } // end String toString()
 
-    public static void serialize(Employee employee) {
+    public static void serialize(EmployeeNotUsingMemento employeeNotUsingMemento) {
 
         try (   FileOutputStream fileOut = new FileOutputStream(SERIALIZABLE_PATH);
                 ObjectOutputStream out = new ObjectOutputStream(fileOut);
                 ) {
 
-            out.writeObject(employee);
+            out.writeObject(employeeNotUsingMemento);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     } // end static Employee serialize(Employee employee)
 
-    public static Employee deserialize() {
+    public static EmployeeNotUsingMemento deserialize() {
 
-        Employee employee = null;
+        EmployeeNotUsingMemento employeeNotUsingMemento = null;
 
         try (   FileInputStream fileIn = new FileInputStream(SERIALIZABLE_PATH);
                 ObjectInputStream in = new ObjectInputStream(fileIn);) {
 
-            employee = (Employee) in.readObject();
+            employeeNotUsingMemento = (EmployeeNotUsingMemento) in.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
-        return employee;
+        return employeeNotUsingMemento;
     } // end static Employee deserialize()
-} // end class Employee
+} // end class EmployeeNotUsingMemento
