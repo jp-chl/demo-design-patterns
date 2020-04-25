@@ -3,6 +3,7 @@ package com.jpvr.demodesignpatterns.dp.behavioral;
 import com.jpvr.demodesignpatterns.dp.behavioral.observer.MessageStream;
 import com.jpvr.demodesignpatterns.dp.behavioral.observer.PhoneClient;
 import com.jpvr.demodesignpatterns.dp.behavioral.observer.Subject;
+import com.jpvr.demodesignpatterns.dp.behavioral.observer.TabletClient;
 import org.junit.jupiter.api.Test;
 
 import java.util.Observable;
@@ -16,8 +17,10 @@ public class ObserverTests {
         Subject subject = new MessageStream();
 
         PhoneClient phoneClient = new PhoneClient(subject);
+        TabletClient tabletClient = new TabletClient(subject);
 
         phoneClient.addMessage("Here is a new message!");
+        tabletClient.addMessage("Here is another message!");
     } // end void observerTest()
 
 
