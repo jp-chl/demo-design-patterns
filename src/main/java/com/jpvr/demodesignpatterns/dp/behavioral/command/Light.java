@@ -27,4 +27,8 @@ public class Light {
 
         System.out.println("Light switched off");
     } // end void off()
+
+    public boolean isOn() {
+        return isOn;
+    }
 } // end class Light
