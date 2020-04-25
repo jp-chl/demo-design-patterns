@@ -34,60 +34,43 @@ public class BikeRepository implements Iterable<String> {
         index++;
     } // end void addBike(String bikeModel)
 
-//    @Override
-//    public Iterator<String> iterator() {
-//
-//        Iterator<String> iterator = new Iterator<String>() {
-//
-//            private int currentIndex = 0;
-//
-//            @Override
-//            public boolean hasNext() {
-//                return (currentIndex < bikes.length) && (bikes[currentIndex] != null);
-//            } // end boolean hasNext()
-//
-//            @Override
-//            public String next() {
-//                return bikes[currentIndex++];
-//            } // end String next()
-//
-//            @Override
-//            public void remove() {
-//                throw new UnsupportedOperationException("implementation pending");
-//            } // end void remove()
-//        }; // end Iterator methods
-//
-//        return iterator;
-//    } // end Iterator<String> iterator()
-
-
-
     @Override
     public Iterator<String> iterator() {
-        Iterator<String> it = new Iterator<String>() {
+
+        Iterator<String> iterator = new Iterator<String>() {
 
             private int currentIndex = 0;
 
             @Override
             public boolean hasNext() {
-                return currentIndex < bikes.length && bikes[currentIndex] != null;
-            }
+
+                return (currentIndex < bikes.length) && (bikes[currentIndex] != null);
+            } // end boolean hasNext()
 
             @Override
             public String next() {
+
                 return bikes[currentIndex++];
-            }
+            } // end String next()
 
             @Override
             public void remove() {
-                throw new UnsupportedOperationException();
-            }
+                //throw new UnsupportedOperationException("implementation pending");
 
-        };
+                for(int i=currentIndex; i<bikes.length; i++) {
 
-        return it;
-    }
+                    String nextBike = bikes[i];
+                    bikes[i-1] = nextBike;
+                } // end iteration
 
+                bikes[bikes.length - 1] = null;
+
+                currentIndex--;
+            } // end void remove()
+        }; // end Iterator methods
+
+        return iterator;
+    } // end Iterator<String> iterator()
 
 
 } // end class BikeRepository

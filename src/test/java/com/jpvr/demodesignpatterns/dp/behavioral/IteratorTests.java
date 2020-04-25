@@ -16,11 +16,24 @@ public class IteratorTests {
         repo.addBike("Trek");
         repo.addBike("Canon");
 
+        for(int i=0; i<8; i++) {
+            repo.addBike("model" + i + "");
+        }
+
         Iterator<String> bikeIterator = repo.iterator();
 
-//        while ( bikeIterator.hasNext() ) {
-//            System.out.println(bikeIterator.next());
-//        } // end iteration
+        while ( bikeIterator.hasNext() ) {
+
+            final String nextBike = bikeIterator.next();
+            System.out.println(nextBike);
+
+            if (nextBike.equals("Trek")) {
+                System.out.println("Removing bike ("+nextBike+")...");
+                bikeIterator.remove();
+            }
+        } // end iteration
+
+        System.out.println("------\n");
 
         for(String bike : repo) {
             System.out.println(bike);
