@@ -43,18 +43,16 @@ public class Employee implements Serializable {
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';
-    }
+    } // end String toString()
 
     public static void serialize(Employee employee) {
 
-        try {
-            FileOutputStream fileOut = new FileOutputStream(SERIALIZABLE_PATH);
-            ObjectOutputStream out = new ObjectOutputStream(fileOut);
+        try (   FileOutputStream fileOut = new FileOutputStream(SERIALIZABLE_PATH);
+                ObjectOutputStream out = new ObjectOutputStream(fileOut);
+                ) {
 
             out.writeObject(employee);
 
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -64,18 +62,14 @@ public class Employee implements Serializable {
 
         Employee employee = null;
 
-        try {
-            FileInputStream fileIn = new FileInputStream(SERIALIZABLE_PATH);
-            ObjectInputStream in = new ObjectInputStream(fileIn);
+        try (   FileInputStream fileIn = new FileInputStream(SERIALIZABLE_PATH);
+                ObjectInputStream in = new ObjectInputStream(fileIn);) {
+
             employee = (Employee) in.readObject();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
+        } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
         return employee;
-    } // static Employee deserialize()
+    } // end static Employee deserialize()
 } // end class Employee
