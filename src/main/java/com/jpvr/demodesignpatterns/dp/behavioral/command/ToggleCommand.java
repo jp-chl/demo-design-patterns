@@ -6,11 +6,11 @@ public class ToggleCommand implements Command {
 
     public ToggleCommand(Light light) {
         this.light = light;
-    }
+    } // end ToggleCommand(Light light)
 
     @Override
     public void execute() {
 
         light.toggle();
-    }
-}
+    } // end void execute()
+} // end class ToggleCommand implements Command

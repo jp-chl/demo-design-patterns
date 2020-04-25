@@ -3,24 +3,30 @@ package com.jpvr.demodesignpatterns.dp.behavioral;
 import com.jpvr.demodesignpatterns.dp.behavioral.command.*;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class CommandTests {
 
     @Test
     public void commandTest() {
 
-        Light light = new Light(); // receiver
+        Light bedroomLight = new Light(); // receiver
+        Light kitchenLight = new Light(); // receiver
+
         Switch lightSwitch = new Switch(); // invoker
 
-        Command onCommand = new OnCommand(light); // command
-        lightSwitch.storeAndExecute(onCommand);
-
-        Command toggleCommand = new ToggleCommand(light);
-        lightSwitch.storeAndExecute(toggleCommand);
-        lightSwitch.storeAndExecute(toggleCommand);
+        Command toggleCommand = new ToggleCommand(bedroomLight);
         lightSwitch.storeAndExecute(toggleCommand);
 
+        List<Light> lights = new ArrayList<>();
+        lights.add(bedroomLight);
+        lights.add(kitchenLight);
+
+        Command allLightsCommand = new AllLightsCommand(lights);
+
+        lightSwitch.storeAndExecute(allLightsCommand);
     } // end void commandTest()
-
 
     @Test
     public void everydayDemo() {
