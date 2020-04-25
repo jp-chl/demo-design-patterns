@@ -10,16 +10,21 @@ public class IteratorTests {
     @Test
     public void BikeRepositoryIteratorTest() {
 
-        BikeRepository repository = new BikeRepository();
+        BikeRepository repo = new BikeRepository();
 
-        repository.addBike("Oxford");
-        repository.addBike("Trek");
-        repository.addBike("Canon");
+        repo.addBike("Oxford");
+        repo.addBike("Trek");
+        repo.addBike("Canon");
 
-        Iterator<String> bikeIterator = repository.iterator();
+        Iterator<String> bikeIterator = repo.iterator();
 
-        while ( bikeIterator.hasNext() ) {
-            System.out.println(bikeIterator.next());
+//        while ( bikeIterator.hasNext() ) {
+//            System.out.println(bikeIterator.next());
+//        } // end iteration
+
+        for(String bike : repo) {
+            System.out.println(bike);
         } // end iteration
+
     } // end void BikeRepositoryIteratorTest()
 } // end class IteratorTests

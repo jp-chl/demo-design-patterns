@@ -2,7 +2,7 @@ package com.jpvr.demodesignpatterns.dp.behavioral.iterator;
 
 import java.util.Iterator;
 
-public class BikeRepository implements Iterable {
+public class BikeRepository implements Iterable<String> {
 
     private static final int INITIAL_CAPACITY = 10;
     private static final int NEXT_CAPACITY = 5;
@@ -34,29 +34,60 @@ public class BikeRepository implements Iterable {
         index++;
     } // end void addBike(String bikeModel)
 
+//    @Override
+//    public Iterator<String> iterator() {
+//
+//        Iterator<String> iterator = new Iterator<String>() {
+//
+//            private int currentIndex = 0;
+//
+//            @Override
+//            public boolean hasNext() {
+//                return (currentIndex < bikes.length) && (bikes[currentIndex] != null);
+//            } // end boolean hasNext()
+//
+//            @Override
+//            public String next() {
+//                return bikes[currentIndex++];
+//            } // end String next()
+//
+//            @Override
+//            public void remove() {
+//                throw new UnsupportedOperationException("implementation pending");
+//            } // end void remove()
+//        }; // end Iterator methods
+//
+//        return iterator;
+//    } // end Iterator<String> iterator()
+
+
+
     @Override
     public Iterator<String> iterator() {
-
-        Iterator<String> iterator = new Iterator<String>() {
+        Iterator<String> it = new Iterator<String>() {
 
             private int currentIndex = 0;
 
             @Override
             public boolean hasNext() {
-                return (currentIndex < bikes.length) && (bikes[currentIndex] != null);
-            } // end boolean hasNext()
+                return currentIndex < bikes.length && bikes[currentIndex] != null;
+            }
 
             @Override
             public String next() {
                 return bikes[currentIndex++];
-            } // end String next()
+            }
 
             @Override
             public void remove() {
-                throw new UnsupportedOperationException("implementation pending");
-            } // end void remove()
-        }; // end Iterator methods
+                throw new UnsupportedOperationException();
+            }
 
-        return iterator;
-    } // end Iterator<String> iterator()
+        };
+
+        return it;
+    }
+
+
+
 } // end class BikeRepository
