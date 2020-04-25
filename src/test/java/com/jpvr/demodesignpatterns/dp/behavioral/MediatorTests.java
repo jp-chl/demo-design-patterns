@@ -3,8 +3,6 @@ package com.jpvr.demodesignpatterns.dp.behavioral;
 import com.jpvr.demodesignpatterns.dp.behavioral.mediator.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class MediatorTests {
 

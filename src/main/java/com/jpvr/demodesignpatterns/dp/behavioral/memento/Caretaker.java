@@ -1,11 +1,14 @@
 package com.jpvr.demodesignpatterns.dp.behavioral.memento;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Stack;
 
 // caretaker
 public class Caretaker {
 
-    private Stack<EmployeeMemento> employeeHistory = new Stack<>();
+    //private Stack<EmployeeMemento> employeeHistory = new Stack<>();
+    private Deque<EmployeeMemento> employeeHistory = new ArrayDeque<>();
 
     public void save(Employee employee) {
 
