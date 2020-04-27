@@ -46,7 +46,7 @@ public class PersonStorageTests {
         final Person person1 = people.get(0);
 
         String a = null;
-    } // end
+    } // end void test()
 
     @Test
     public void savesAndLoadsPerson() throws Exception {
@@ -60,16 +60,6 @@ public class PersonStorageTests {
 
     @Test
     public void savesAndLoadsArraysOfPeople() throws IOException, ClassNotFoundException {
-
-//        //Person[] persons = new Person[2];
-////        Partner[] partners = new Partner[2];
-////        Person[] persons = partners; // covariant
-//
-//        Employee[] employees = new Employee[2];
-//        Person[] persons = employees;
-//
-//        persons[0] = donDraper;
-//        persons[1] = bertCooper;
 
         List<Partner> persons = new ArrayList<>();
         persons.add(donDraper);

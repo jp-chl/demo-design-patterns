@@ -22,7 +22,7 @@ public class KataMiddleExampleTests {
         Assertions.assertEquals("e", getMiddle("Abcdefghi"));
         long end = System.currentTimeMillis();
         long diff = end - start;
-        System.out.println("Metodo 1: " + diff);
+        System.out.println("Method 1: " + diff);
 
         start = System.currentTimeMillis();
 //        Assertions.assertEquals("", getMiddle(""));

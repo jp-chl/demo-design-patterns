@@ -20,9 +20,9 @@ public class FacadeTests {
     public void testURLFacade() throws IOException {
 
         final String protocol = "http";
-        final String host = "www.pluralsight.com";
+        final String host = "www.sitios.cl/";
         final int port = 80;
-        final String file = "/author/bryan-hansen";
+        final String file = "";
 
         URL url = new URL(protocol, host, port, file);
 

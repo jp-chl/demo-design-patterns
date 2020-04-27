@@ -22,7 +22,7 @@ public class IntersectionTypesCast {
         final Runnable runnable = (Runnable) readFromFile(file);
         runnable.run();
 
-    } // end
+    } // end  void test()
 
     private void writeToFile(final File file, Object object) throws IOException {
 
@@ -31,7 +31,7 @@ public class IntersectionTypesCast {
 
             oos.writeObject(object);
         }
-    } // end
+    } // end void writeToFile(final File file, Object object)
 
     private Object readFromFile(final File file) throws IOException, ClassNotFoundException {
 
@@ -40,5 +40,5 @@ public class IntersectionTypesCast {
 
             return ois.readObject();
         }
-    } // end
+    } // end Object readFromFile(final File file)
 } // end class IntersectionTypesCast

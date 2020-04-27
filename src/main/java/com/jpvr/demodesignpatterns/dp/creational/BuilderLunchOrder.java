@@ -13,7 +13,7 @@ public class BuilderLunchOrder {
         condiments = builder.condiments;
         dressing = builder.dressing;
         meat = builder.meat;
-    } // end
+    } // end BuilderLunchOrder(Builder builder)
 
     @Override
     public String toString() {
@@ -24,16 +24,6 @@ public class BuilderLunchOrder {
                 ", meat='" + meat + '\'' +
                 '}';
     } // end String toString()
-
-    /**
-     * In order to avoid new at instance creation time
-     * a static constructor can be made available
-     * @return Builder instance
-     */
-//    public static Builder Builder() {
-//
-//        return new Builder();
-//    } // end
 
     public String getBread() {
         return bread;

@@ -45,8 +45,8 @@ public class ObserverTests {
         public void someoneTweeted() {
             setChanged();
             notifyObservers();
-        }
-    }
+        } // end void someoneTweeted()
+    } // end inner class TwitterStream extends Observable
 
     // concrete observer
     class Client implements Observer {
@@ -61,6 +61,6 @@ public class ObserverTests {
         public void update(Observable o, Object arg) {
 
             System.out.println("Update " + name + "'s stream, someone tweeted something");
-        }
-    }
+        } // end void update(Observable o, Object arg)
+    } // end inner class Client implements Observer
 } // end class ObserverTests

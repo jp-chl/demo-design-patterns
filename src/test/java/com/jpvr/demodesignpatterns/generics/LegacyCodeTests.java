@@ -26,5 +26,5 @@ public class LegacyCodeTests {
             final Object element = iterator.next();
             System.out.println("element = " + element);
         }
-    } // end
+    } // end void test()
 } // end class LegacyCodeTests

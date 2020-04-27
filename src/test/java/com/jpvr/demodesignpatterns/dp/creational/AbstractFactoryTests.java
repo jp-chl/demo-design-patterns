@@ -32,7 +32,7 @@ public class AbstractFactoryTests {
         System.out.println(abstractFactory.getClass());
         System.out.println(factory.getClass());
 
-    } // end
+    } // end void test()
 
     @Test
     public void abstractFactoryDemo() {

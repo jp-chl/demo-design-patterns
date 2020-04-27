@@ -6,4 +6,4 @@ public class BlueSquare extends Circle {
     public void applyColor() {
         System.out.println("Applying blue color");
     } // end
-}
+} // end class BlueSquare extends Circle

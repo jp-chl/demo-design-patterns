@@ -43,17 +43,5 @@ public class KataPerfectPowerTests {
         return number > 1
                 && IntStream.rangeClosed(2, (int) Math.sqrt(number))
                 .noneMatch(n -> (number % n == 0));
-
-//
-//        boolean result = true;
-//        for (int i = 2; i*i < number; i++) {
-//            if (number % i == 0) {
-//                result = false;
-//                //return false;
-//            }
-//        }
-//
-//        return result;
-        //return true;
     } // end
 } // end class KataPerfectPowerTests

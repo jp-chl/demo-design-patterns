@@ -33,14 +33,14 @@ public class Person {
 
         if (age != person.age) return false;
         return Objects.equals(name, person.name);
-    }
+    } // end boolean equals(Object o)
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
         result = 31 * result + age;
         return result;
-    }
+    } // end int hashCode()
 
     @Override
     public String toString() {
@@ -48,5 +48,5 @@ public class Person {
                 "name='" + name + '\'' +
                 ", age=" + age +
                 '}';
-    }
+    } // end String toString()
 } // end class Person

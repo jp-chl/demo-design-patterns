@@ -57,7 +57,6 @@ public class PrototypeEverydayTests {
         System.out.println(anotherMovie.getRuntime());
         System.out.println(anotherMovie.getTitle());
         System.out.println(anotherMovie.getUrl());
-
     } // end void shouldCreateRegistryPrototype()
 
 

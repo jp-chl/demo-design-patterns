@@ -8,7 +8,6 @@ public class MenuItem extends MenuComponent {
         this.url = url;
     } // end constructor
 
-
     @Override
     public String toString() {
 
@@ -17,7 +16,6 @@ public class MenuItem extends MenuComponent {
         builder.append(print(this));
 
         return builder.toString();
-
         //return print(this);
     } // end String toString()
 } // end class MenuItem extends MenuComponent

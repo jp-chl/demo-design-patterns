@@ -17,16 +17,6 @@ public class Injector {
 
     public <T> T newInstance(final Class<?> clazz) {
 
-//        if ( objectGraph.containsKey(clazz) ) {
-//
-//            return objectGraph.get(clazz);
-//        } else {
-//
-//            instantiate(clazz);
-//        }
-//
-//        return null;
-
         T result = (T) objectGraph.computeIfAbsent(clazz, this::instantiate);
         return result;
     } // end Object newInstance(final String className)

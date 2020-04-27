@@ -7,7 +7,7 @@ public abstract class SandwichDecorator implements Sandwich {
     // Composition
     public SandwichDecorator(Sandwich customSandwich) {
         this.customSandwich = customSandwich;
-    }
+    } // end constructor
 
     //@Override
     public String make() {

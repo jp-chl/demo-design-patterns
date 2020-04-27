@@ -97,7 +97,7 @@ public class StrategyTests {
         for(Person person : people) {
             System.out.println("person = " + person.getName());
         }
-    }
+    } // end void printContents(List<Person> people)
 
 
 } // end class StrategyTests

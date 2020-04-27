@@ -1,6 +1,7 @@
 package com.jpvr.demodesignpatterns.dp.behavioral.visitorok;
 
 public class Wheel implements AtvPart {
+
     @Override
     public void accept(AtvPartVisitor visitor) {
 

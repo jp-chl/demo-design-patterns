@@ -15,7 +15,7 @@ public class EmployeeDB implements Employee {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-    }
+    } // end constructor
 
     @Override
     public String getId() {
@@ -45,5 +45,5 @@ public class EmployeeDB implements Employee {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 '}';
-    }
+    } // end String toString()
 } // end class EmployeeDB extends EmployeeClient

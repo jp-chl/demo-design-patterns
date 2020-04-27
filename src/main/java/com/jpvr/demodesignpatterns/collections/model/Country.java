@@ -10,14 +10,14 @@ public class Country {
         this.name = name;
         this.population = population;
         this.continent = continent;
-    }
+    } // end
 
     public Country(Country country) {
 
         this.name = country.name;
         this.population = country.population;
         this.continent = country.continent;
-    }
+    } // end
 
     public String getName() {
         return name;

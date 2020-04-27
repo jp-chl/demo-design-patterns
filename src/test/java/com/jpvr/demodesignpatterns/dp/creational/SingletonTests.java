@@ -25,7 +25,7 @@ public class SingletonTests {
         if (singletonRuntime == anotherInstance) {
             System.out.println("same instance");
         }
-    } // end
+    } // end void testSingleton()
 
     @Test
     public void dbSingletonDemo() {

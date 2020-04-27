@@ -19,7 +19,7 @@ public class KataFindCenturyTests {
 
         int result = (number+99) / 100;
         return result;
-    }
+    } // end int century(int number)
 
     private int century2(int number) {
         // your code goes here

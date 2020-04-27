@@ -8,7 +8,7 @@ public class Detail {
     public Detail(String label, String value) {
         this.label = label;
         this.value = value;
-    }
+    } // end constructor
 
     public String getLabel() {
         return label;

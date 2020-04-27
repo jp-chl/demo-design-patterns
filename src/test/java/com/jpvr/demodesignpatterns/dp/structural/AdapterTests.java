@@ -19,7 +19,7 @@ public class AdapterTests {
         System.out.println(arrayOfInts);
 
         System.out.println(listOfInts);
-    } // end
+    } // end void test()
 
     @Test
     public void shouldCreateEmployee() {
@@ -31,4 +31,4 @@ public class AdapterTests {
         System.out.println(employees);
     } // end void shouldCreateEmployee()
 
-} // end
+} // end class AdapterTests

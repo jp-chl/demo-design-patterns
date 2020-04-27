@@ -4,7 +4,7 @@ public class DressingDecorator extends SandwichDecorator {
 
     public DressingDecorator(Sandwich customSandwich) {
         super(customSandwich);
-    }
+    } // end constructor
 
     @Override
     public String make() {
@@ -15,6 +15,4 @@ public class DressingDecorator extends SandwichDecorator {
 
         return " + mustard";
     } // end String addDressing()
-
-
 } // end class DressingDecorator extends SandwichDecorator

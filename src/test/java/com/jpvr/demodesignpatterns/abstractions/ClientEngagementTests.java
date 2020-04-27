@@ -8,6 +8,6 @@ public class ClientEngagementTests {
 
         final Iterable<ClientEngagement> engagements = repository.find(new Query()
                 .atLeastHoursWorked(3)
-                .client("Pluralsight"));
+                .client("JP"));
     } // end void testClientEngagements()
 } // end class ClientEngagementTests

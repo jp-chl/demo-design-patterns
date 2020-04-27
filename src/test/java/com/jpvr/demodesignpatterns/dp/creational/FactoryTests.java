@@ -19,7 +19,7 @@ public class FactoryTests {
         System.out.println(calendar);
         System.out.println(calendar.get(Calendar.DAY_OF_MONTH));
 
-    } // end
+    } // end void instancesTests()
 
     @Test
     public void WebsiteFactoryTests() {
@@ -31,5 +31,5 @@ public class FactoryTests {
         site = WebsiteFactory.getWebsite(WebsiteType.SHOP);
 
         System.out.println(site.getPages());
-    } // end
+    } // end void WebsiteFactoryTests()
 } // end class FactoryTests

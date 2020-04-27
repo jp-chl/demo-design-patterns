@@ -24,7 +24,7 @@ public class IntersectionTypeTests {
         RandomAccessFile randomAccessFile = new RandomAccessFile(filename, "rw");
         person = read(randomAccessFile);
         System.out.println(person);
-    } // end
+    } // end void readPersonFromFile()
 
     private <T extends DataInput & Closeable> Person read(final T source) {
 
@@ -34,7 +34,7 @@ public class IntersectionTypeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    } // end
+    } // end <T extends DataInput & Closeable> Person read(final T source
 
     private Person read(final DataInputStream source) {
 
@@ -44,5 +44,5 @@ public class IntersectionTypeTests {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-    } // end
+    } // end Person read(final DataInputStream source)
 } // end class IntersectionTypeTests

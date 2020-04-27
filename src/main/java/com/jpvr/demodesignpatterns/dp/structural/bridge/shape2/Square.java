@@ -4,11 +4,11 @@ public class Square extends Shape {
 
     public Square(Color color) {
         super(color);
-    } // end
+    } // end constructor
 
     @Override
     public void applyColor() {
 
         color.applyColor();
-    } // end
+    } // end void applyColor()
 } // end class Square extends Shape

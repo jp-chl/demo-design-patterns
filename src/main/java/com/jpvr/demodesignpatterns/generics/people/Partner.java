@@ -12,5 +12,5 @@ public class Partner extends Person {
                 "name='" + getName() + '\'' +
                 ", age=" + getAge() +
                 '}';
-    }
+    } // end  String toString()
 } // end class Partner extends Person

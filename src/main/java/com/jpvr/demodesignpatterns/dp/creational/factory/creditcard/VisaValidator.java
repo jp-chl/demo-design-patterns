@@ -6,5 +6,5 @@ public class VisaValidator implements Validator {
     public boolean isValid(CreditCard creditCard) {
 
         return false;
-    }
-}
+    } // end boolean isValid(CreditCard creditCard)
+} // end class VisaValidator implements Validator

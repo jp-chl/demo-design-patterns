@@ -5,5 +5,5 @@ public class Circle extends Shape {
     @Override
     public void applyColor() {
 
-    }
+    } // end void applyColor()
 } // end class Circle

@@ -12,7 +12,7 @@ public class WebsiteFactory {
                 return new Shop();
             default:
                 return null;
-        }
+        } // end switch(siteType)
     } // end getWebsite
 
 } // end class WebsiteFactory

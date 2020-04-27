@@ -25,19 +25,19 @@ public class KataBinaryArrayToNumberTests {
             int decimal1 = ConvertBinaryArrayToInt(binary1);
         long end = System.currentTimeMillis();
         long diff = end - start;
-        System.out.println("Metodo 1: " + diff);
+        System.out.println("Method 1: " + diff);
 
         start = System.currentTimeMillis();
             decimal1 = ConvertBinaryArrayToInt2(binary1);
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 2: " + diff);
+        System.out.println("Method 2: " + diff);
 
         start = System.currentTimeMillis();
             decimal1 = ConvertBinaryArrayToInt3(binary1);
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 3: " + diff);
+        System.out.println("Method 3: " + diff);
 
         boolean valid = (1 == ConvertBinaryArrayToInt(binary1));
         valid = (8 == ConvertBinaryArrayToInt(binary2));

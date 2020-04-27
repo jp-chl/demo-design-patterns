@@ -7,14 +7,14 @@ public class Person {
     private int age;
 
     public Person() {
-    }
+    } // end
 
     public Person(String name, String phoneNumber, int age) {
 
         this.name = name;
         this.phoneNumber = phoneNumber;
         this.age = age;
-    }
+    } // end Person(String name, String phoneNumber, int age)
 
     public int getAge() {
         return age;

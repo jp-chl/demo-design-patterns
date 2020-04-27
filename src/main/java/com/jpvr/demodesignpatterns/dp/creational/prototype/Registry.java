@@ -13,8 +13,7 @@ public class Registry {
         MOVIE, BOOK
     };
 
-    private Map<KIND, Item> items =
-            new HashMap<KIND, Item>();
+    private Map<KIND, Item> items = new HashMap<KIND, Item>();
 
     //public Item createItem(String type) {
     public Item createItem(KIND type) {

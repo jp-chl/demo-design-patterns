@@ -12,5 +12,5 @@ public class Employee extends Person {
                 "name='" + getName() + '\'' +
                 ", age=" + getAge() +
                 '}';
-    }
+    }  // end  String toString()
 } // end class Employee extends Person

@@ -4,11 +4,11 @@ public class Circle extends Shape {
 
     public Circle(Color color) {
         super(color);
-    } // end
+    } // end constructor
 
     @Override
     public void applyColor() {
 
         color.applyColor();
-    } // end
+    } // end void applyColor()
 } // end class Circle extends Shape

@@ -18,7 +18,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root2(65785412));
         long end = System.currentTimeMillis();
         long diff = end - start;
-        System.out.println("Metodo 1: " + diff);
+        System.out.println("Method 1: " + diff);
 
         start = System.currentTimeMillis();
         Assertions.assertEquals(7, digital_root(25));
@@ -30,7 +30,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root(65785412));
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 2: " + diff);
+        System.out.println("Method 2: " + diff);
 
         start = System.currentTimeMillis();
         Assertions.assertEquals(7, digital_root3(25));
@@ -42,7 +42,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root3(65785412));
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 3: " + diff);
+        System.out.println("Method 3: " + diff);
 
         start = System.currentTimeMillis();
         Assertions.assertEquals(7, digital_root4(25));
@@ -54,7 +54,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root4(65785412));
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 4: " + diff);
+        System.out.println("Method 4: " + diff);
 
         start = System.currentTimeMillis();
         Assertions.assertEquals(7, digital_root5(25));
@@ -66,7 +66,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root5(65785412));
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 5: " + diff);
+        System.out.println("Method 5: " + diff);
 
         start = System.currentTimeMillis();
         Assertions.assertEquals(7, digital_root6(25));
@@ -78,7 +78,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root6(65785412));
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 6: " + diff);
+        System.out.println("Method 6: " + diff);
 
         start = System.currentTimeMillis();
         Assertions.assertEquals(7, digital_root7(25));
@@ -90,7 +90,7 @@ public class KataDigitalRootTests {
         Assertions.assertEquals(2, digital_root7(65785412));
         end = System.currentTimeMillis();
         diff = end - start;
-        System.out.println("Metodo 7: " + diff);
+        System.out.println("Method 7: " + diff);
 
     } // end void testDigitalRoots()
 
@@ -109,20 +109,6 @@ public class KataDigitalRootTests {
         }
 
         return result;
-
-//        int number = n;
-//
-//        while(number > 9) {
-//            number = number/10 + number%10;
-//        }
-//
-//        return number;
-
-//        while(n > 9) {
-//            n = n/10 + n%10;
-//        }
-//
-//        return n;
     } // end int digitalRootRecursive(int n)
 
     private int digital_root2(int n) {

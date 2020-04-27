@@ -12,7 +12,7 @@ public class EmployeeLdap {
         this.surname = surname;
         this.givenName = givenName;
         this.mail = mail;
-    }
+    } // end constructor
 
     public String getCn() {
         return cn;

@@ -13,7 +13,6 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class TheArrayProblemTests {
 
-
     @Test
     public void shouldGetCustomArrayListElements() {
 

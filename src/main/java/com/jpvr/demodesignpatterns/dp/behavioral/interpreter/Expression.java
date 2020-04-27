@@ -4,4 +4,4 @@ public interface Expression {
 
     public boolean interpret(String context);
 
-} // end interface
+} // end interface Expression

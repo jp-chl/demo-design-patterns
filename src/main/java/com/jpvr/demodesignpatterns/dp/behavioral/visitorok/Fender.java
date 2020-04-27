@@ -1,6 +1,7 @@
 package com.jpvr.demodesignpatterns.dp.behavioral.visitorok;
 
 public class Fender implements AtvPart {
+
     @Override
     public void accept(AtvPartVisitor visitor) {
 

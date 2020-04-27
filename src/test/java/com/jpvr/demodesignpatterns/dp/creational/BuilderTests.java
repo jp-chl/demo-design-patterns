@@ -14,7 +14,7 @@ public class BuilderTests {
     public void stringBuilderTest() {
 
         System.out.println(new StringBuilder().append("a").append(4).toString());
-    } // end
+    } // end void stringBuilderTest()
 
     @Test
     public void lunchBuilderTest() {
@@ -29,5 +29,5 @@ public class BuilderTests {
 //                        .meat("m")
 //                        .build()
 //                        .getCondiments());
-    } // end
+    } // end void lunchBuilderTest()
 } // end class BuilderTests

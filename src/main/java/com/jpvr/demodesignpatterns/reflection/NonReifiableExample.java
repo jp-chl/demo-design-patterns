@@ -20,5 +20,5 @@ public class NonReifiableExample<T> {
 
         List<? extends Number> numbers = new ArrayList<>();
         System.out.println("numbers = " + numbers.getClass());
-    } // end
+    } // end void main()
 } // end class NonReifiableExample

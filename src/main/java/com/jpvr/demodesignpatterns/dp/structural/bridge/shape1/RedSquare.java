@@ -5,5 +5,5 @@ public class RedSquare extends Square {
     @Override
     public void applyColor() {
         System.out.println("Applying red color");
-    } // end
+    } // end void applyColor()
 } // end class RedSquare extends Square

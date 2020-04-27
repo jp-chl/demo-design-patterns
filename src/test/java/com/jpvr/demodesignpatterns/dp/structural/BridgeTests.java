@@ -94,5 +94,5 @@ public class BridgeTests {
         Formatter htmlFormatter = new HtmlFormatter();
         String htmlMaterial = moviePrinter.print(htmlFormatter);
         System.out.println(htmlMaterial);
-    } // end
+    } // end void shouldCreateMovieTest()
 } // end class BridgeTests

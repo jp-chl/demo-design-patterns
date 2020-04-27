@@ -12,7 +12,6 @@ public class AbstractionTests {
 
         Animal animal = new Animal();
         animal.draw(1, 2, 3, 4, 5);
-
-    }
+    } // end void test()
 
 } // end class AbstractionTests

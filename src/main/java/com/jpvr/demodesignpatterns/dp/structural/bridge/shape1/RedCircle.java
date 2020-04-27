@@ -5,5 +5,5 @@ public class RedCircle extends Circle {
     @Override
     public void applyColor() {
         System.out.println("Applying red color");
-    } // end
-}
+    } // end void applyColor()
+} // end class RedCircle extends Circle

@@ -17,8 +17,8 @@ public class ProxyTests {
         TwitterService service = (TwitterService) SecurityProxy.newInstance(
                 new TwitterServiceImpl());
 
-        System.out.println(service.getTimeline("bh5k"));
+        System.out.println(service.getTimeline("jpv_chl"));
 
-        service.postToTimeline("bh5k", "not going to work");
+        service.postToTimeline("jpv_chl", "not going to work");
     } // end void twitterDemo()
 } // end class ProxyTests

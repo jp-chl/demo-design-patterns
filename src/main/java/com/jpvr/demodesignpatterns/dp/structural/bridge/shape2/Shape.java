@@ -6,7 +6,7 @@ public abstract class Shape {
 
     public Shape(Color color) {
         this.color = color;
-    }
+    } // end constructor
 
     abstract public void applyColor();
 } // end abstract class Shape

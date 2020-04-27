@@ -18,7 +18,7 @@ public class AmexFactory extends CreditCardFactory {
         }
 
         return null;
-    }
+    } // end CreditCard getCreditCard(CardType cardType)
 
     @Override
     public Validator getValidator(CardType cardType) {
@@ -35,5 +35,5 @@ public class AmexFactory extends CreditCardFactory {
         }
 
         return null;
-    }
-}
+    } // end Validator getValidator(CardType cardType)
+} // end class AmexFactory extends CreditCardFactory

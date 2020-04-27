@@ -47,7 +47,7 @@ public class TwitterServiceImpl implements TwitterService {
     public void postToTimeline(String screenName, String message) {
 
         System.out.println(message);
-    } // end
+    } // end void postToTimeline(String screenName, String message)
 } // end class TwitterServiceImpl
 
 
