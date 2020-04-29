@@ -9,6 +9,8 @@ import com.jpvr.demodesignpatterns.lambda.chain.util.Comparator;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
+import java.util.Calendar;
+
 import static org.junit.Assert.*;
 //import static org.junit.jupiter.api.Assertions;
 
@@ -152,10 +154,45 @@ public class ChainingTests {
         final Person linda = new Person("Linda", 26);
         final Person james = new Person("James", 32);
 
-        final java.util.function.Function<Person, Integer> getAge = p -> p.getAge();
+        //final java.util.function.Function<Person, Integer> getAge = p -> p.getAge();
+        final java.util.function.Function<Person, Integer> getAge = Person::getAge;
 
-        //Comparator<Person> cmpAge = Comparator.comparing(getAge);
+        Comparator<Person> cmpAge = Comparator.comparing(getAge);
+
+        assertTrue( (cmpAge.compare(mary, john) > 0) );
+        assertFalse((cmpAge.compare(john, james) > 0));
+        assertTrue( (cmpAge.compare(linda, john) > 0));
     } // end void givenPersonObject_WhenUsingCustomComparator_ThenCompareByAge()
+
+    @Test
+    public void givenPersonObject_WhenCombiningCustomComparator_ThenCompareByNameAndAge() {
+
+        final java.util.function.Function<Person, String> getName = Person::getName;
+        final java.util.function.Function<Person, Integer> getAge = Person::getAge;
+
+        final Comparator<Person> cmpName = Comparator.comparing(getName);
+        final Comparator<Person> cmpAge  = Comparator.comparing(getAge);
+
+        // Combining comparators
+        final Comparator<Person> cmp = cmpName.thenComparing(cmpAge);
+
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            cmpName.thenComparing(null);
+        });
+
+        Person person1 = new Person("name", 22);
+        Person person2 = new Person("name", 23);
+        assertTrue( cmp.compare(person1, person2) < 0);
+
+        person2.setAge(22);
+        assertEquals(0, cmp.compare(person1, person2));
+        assertEquals(person1.getName(), person2.getName());
+
+        assertEquals(person1.getAge(), person2.getAge());
+        person1.setName("tony"); // person2.getName() == "name"
+        assertTrue( cmp.compare(person1, person2) > 0);
+
+    } // end void givenPersonObject_WhenCombiningCustomComparator_ThenCompareByNameAndAge()
 } // end class ChainingTests
 
 
