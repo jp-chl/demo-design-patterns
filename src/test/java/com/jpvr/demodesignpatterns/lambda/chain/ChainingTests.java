@@ -1,6 +1,9 @@
 package com.jpvr.demodesignpatterns.lambda.chain;
 
 import com.jpvr.demodesignpatterns.lambda.chain.function.Consumer;
+import com.jpvr.demodesignpatterns.lambda.chain.function.Function;
+import com.jpvr.demodesignpatterns.lambda.chain.function.Predicate;
+import com.jpvr.demodesignpatterns.lambda.chain.model.Meteo;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -10,7 +13,7 @@ import static org.junit.Assert.*;
 public class ChainingTests {
 
     @Test
-    public void chainingTests() {
+    public void chainingConsumerTests() {
 
         Consumer<String> c1 = s -> System.out.println("c1 = " + s);
         Consumer<String> c2 = s -> System.out.println("c2 = " + s);
@@ -26,8 +29,47 @@ public class ChainingTests {
         Assertions.assertThrows(NullPointerException.class, () -> {
             c1.andThen(null);
         });
-        
+
         Consumer<String> c4 = c1.andThen(c2);
         c4.accept("Hello");
-    } // end void chainingTests()
+    } // end void chainingConsumerTests()
+
+    @Test
+    public void chainingPredicateTests() {
+
+        Predicate<String> p1 = s -> s!=null;
+        Predicate<String> p2 = s -> !s.isEmpty();
+
+        Predicate<String> p3 = p1.and(p2);
+
+        assertFalse( p3.test(null) );
+        assertFalse( p3.test("") );
+        assertTrue ( p3.test("Hello") );
+
+        Predicate<String> p4 = p1.and(p2.negate());
+
+        assertTrue ( p4.test("") );
+        assertFalse( p4.test("Hello") );
+    } // end void chainingPredicateTests()
+
+    @Test
+    public void chainingFunctionTests() {
+
+        Function<Meteo, Integer> readCelsius = m -> m.getTemperature();
+        Function<Integer, Double> celsiusToFahrenheit = t -> t * 9d/5d + 32d;
+        Function<Meteo, Double> readFahrenheit = readCelsius.andThen(celsiusToFahrenheit);
+
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            readFahrenheit.apply(null);
+        });
+
+        assertEquals( new Double(68.0), readFahrenheit.apply(new Meteo(20)));
+        assertEquals( new Double(32), readFahrenheit.apply(new Meteo(0)));
+        assertEquals( new Double(100.4), readFahrenheit.apply(new Meteo(38)));
+    } // end void chainingFunctionTests()
+
+    @Test
+    public void chainingCompositionFunctionTests() {
+
+    } // end void chainingCompositionFunctionTests()
 } // end class ChainingTests
