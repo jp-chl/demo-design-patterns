@@ -88,6 +88,7 @@ public class ChainingTests {
     @Test
     public void chainingIdentityFunctionTests() {
 
-        Function<String, String> identity = s -> s;
+        Function<String, String> identity1 = s -> s;
+        Function<String, String> identity2 = Function.identity();
     } // end void chainingIdentityFunctionTests()
 } // end class ChainingTests

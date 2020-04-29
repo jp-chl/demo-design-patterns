@@ -27,4 +27,10 @@ public interface Function<T, R> {
             return this.apply(t);
         };
     } // end <V> Function compose(Function other)
+
+    // Factory method
+    static <T> Function<T, T> identity() {
+
+        return t -> t;
+    } // end Function<T, T> identity()
 } // end interface Function
