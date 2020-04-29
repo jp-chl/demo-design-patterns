@@ -13,6 +13,6 @@ public interface Consumer<T> {
 
     default Consumer<T> andThen(Consumer<T> other) {
 
-        return null;
+        return (T t) -> {};
     } // end Consumer<T> andThen(Consumer<T> other)
 } // end interface Consumer<T>
