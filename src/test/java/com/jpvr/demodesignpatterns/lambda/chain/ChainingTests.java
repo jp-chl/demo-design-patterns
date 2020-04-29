@@ -95,13 +95,14 @@ public class ChainingTests {
     } // end void chainingIdentityFunctionTests()
 
     @Test
-    public void chainingComparatorTests() {
+    public void givenPersonObject_WhenUsingCustomComparator_ThenCompareByName() {
 
         final Person mary = new Person("Mary", 28);
         final Person john = new Person("John", 22);
         final Person linda = new Person("Linda", 26);
         final Person james = new Person("James", 32);
 
+        // Simple inlining comparator
         Comparator<Person> cmpName1 = (p1, p2) -> {
             return p1.getName().compareTo(p2.getName());
         };
@@ -110,7 +111,7 @@ public class ChainingTests {
         assertTrue( (cmpName1.compare(john, james)) > 0);
         assertTrue( (cmpName1.compare(linda, john)) > 0);
 
-
+        // Comparator using a function
         java.util.function.Function<Person, String> getName = p -> p.getName();
 
         Comparator<Person> cmpName2 = (p1, p2) -> {
@@ -123,11 +124,77 @@ public class ChainingTests {
         assertTrue( (cmpName2.compare(john, james)) > 0);
         assertTrue( (cmpName2.compare(linda, john)) > 0);
 
+        // Comparator by using a generic static function
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            Comparator.comparing(null);
+        });
+
         Comparator<Person> cmpName3 = Comparator.comparing(getName);
 
         assertTrue( (cmpName3.compare(mary, john)) > 0);
         assertTrue( (cmpName3.compare(john, james)) > 0);
         assertTrue( (cmpName3.compare(linda, john)) > 0);
 
+        // New Comparator
+        Comparator<Person> cmpNameReversed = cmpName3.reversed();
+
+        assertFalse( (cmpNameReversed.compare(mary, john)) > 0);
+        assertFalse( (cmpNameReversed.compare(john, james)) > 0);
+        assertFalse( (cmpNameReversed.compare(linda, john)) > 0);
+
     } // end void chainingComparatorTests()
+
+    @Test
+    public void givenPersonObject_WhenUsingCustomComparator_ThenCompareByAge() {
+
+        final Person mary = new Person("Mary", 28);
+        final Person john = new Person("John", 22);
+        final Person linda = new Person("Linda", 26);
+        final Person james = new Person("James", 32);
+
+        final java.util.function.Function<Person, Integer> getAge = p -> p.getAge();
+
+        //Comparator<Person> cmpAge = Comparator.comparing(getAge);
+    } // end void givenPersonObject_WhenUsingCustomComparator_ThenCompareByAge()
 } // end class ChainingTests
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
