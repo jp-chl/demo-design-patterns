@@ -71,5 +71,23 @@ public class ChainingTests {
     @Test
     public void chainingCompositionFunctionTests() {
 
+        Function<Meteo, Integer> readCelsius = Meteo::getTemperature;
+        Function<Integer, Double> celsiusToFahrenheit = t -> t * 9d/5d + 32d;
+
+        Function<Meteo, Double> readFahrenheit = celsiusToFahrenheit.compose(readCelsius);
+
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            readFahrenheit.apply(null);
+        });
+
+        assertEquals( new Double(68.0), readFahrenheit.apply(new Meteo(20)));
+        assertEquals( new Double(32), readFahrenheit.apply(new Meteo(0)));
+        assertEquals( new Double(100.4), readFahrenheit.apply(new Meteo(38)));
     } // end void chainingCompositionFunctionTests()
+
+    @Test
+    public void chainingIdentityFunctionTests() {
+
+        Function<String, String> identity = s -> s;
+    } // end void chainingIdentityFunctionTests()
 } // end class ChainingTests
