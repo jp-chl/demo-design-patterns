@@ -2,6 +2,7 @@ package com.jpvr.demodesignpatterns.lambda.factory.factory;
 
 import com.jpvr.demodesignpatterns.lambda.factory.model.Circle;
 
+import java.awt.*;
 import java.util.List;
 import java.util.function.Supplier;
 import java.util.stream.Collectors;
@@ -20,4 +21,14 @@ public interface CircleFactory extends Supplier<Circle> {
                 .mapToObj(index -> newInstance())
                 .collect(Collectors.toList());
     } // end List<Circle> createFiveCircles()
+
+    static CircleFactory createFactory() {
+
+        return () -> new Circle();
+    } // end static CircleFactory createFactory()
+
+    static CircleFactory createFactory(Color color) {
+
+        return () -> new Circle(color);
+    } // end static CircleFactory createFactory(Color)
 } // end interface CircleFactory extends Supplier<Circle>
