@@ -177,7 +177,7 @@ public class ChainingTests {
         final Comparator<Person> cmp = cmpName.thenComparing(cmpAge);
 
         Assertions.assertThrows(NullPointerException.class, () -> {
-            cmpName.thenComparing(null);
+            cmpName.thenComparing((Comparator<Person>) null);
         });
 
         Person person1 = new Person("name", 22);
@@ -193,6 +193,36 @@ public class ChainingTests {
         assertTrue( cmp.compare(person1, person2) > 0);
 
     } // end void givenPersonObject_WhenCombiningCustomComparator_ThenCompareByNameAndAge()
+
+    @Test
+    public void givenPersonObject_WhenCombiningCustomComparator_ThenChainComparatorCalls() {
+
+        // thenComparing method receiving a Comparator as a parameter
+        //
+        //   final Comparator<Person> cmp1 =
+        //     Comparator.comparing(getName)
+        //       .thenComparing(Comparator.comparing(getAge));
+
+        // New version of overloaded thenComparing method receiving a Function
+        final Comparator<Person> cmp2 =
+                Comparator.comparing(Person::getName)
+                .thenComparing(Person::getAge);
+
+        Assertions.assertThrows(NullPointerException.class, () -> {
+            Comparator.comparing(Person::getName)
+                    .thenComparing(
+                      (java.util.function.Function<Person, String>) null);
+        });
+
+
+        final Person person1 = new Person("name", 22);
+        Person person2 = new Person("name", 23);
+
+        assertTrue(cmp2.compare(person1, person2) < 0);
+
+        person2.setAge(22);
+        assertEquals(0, cmp2.compare(person1, person2));
+    } // end void givenPersonObject_WhenCombiningCustomComparator_ThenChainComparatorCalls()
 } // end class ChainingTests
 
 
