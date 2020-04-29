@@ -1,5 +1,7 @@
 package com.jpvr.demodesignpatterns.lambda.chain.function;
 
+import java.util.Objects;
+
 /**
  * @FunctionInterface allows only one abstract method for a consumer.
  * If you want to add another one:
@@ -13,6 +15,11 @@ public interface Consumer<T> {
 
     default Consumer<T> andThen(Consumer<T> other) {
 
-        return (T t) -> {};
+        Objects.requireNonNull(other);
+
+        return (T t) -> {
+            this.accept(t);
+            other.accept(t);
+        };
     } // end Consumer<T> andThen(Consumer<T> other)
 } // end interface Consumer<T>
