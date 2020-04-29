@@ -4,6 +4,8 @@ import com.jpvr.demodesignpatterns.lambda.chain.function.Consumer;
 import com.jpvr.demodesignpatterns.lambda.chain.function.Function;
 import com.jpvr.demodesignpatterns.lambda.chain.function.Predicate;
 import com.jpvr.demodesignpatterns.lambda.chain.model.Meteo;
+import com.jpvr.demodesignpatterns.lambda.chain.model.Person;
+import com.jpvr.demodesignpatterns.lambda.chain.util.Comparator;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 
@@ -91,4 +93,41 @@ public class ChainingTests {
         Function<String, String> identity1 = s -> s;
         Function<String, String> identity2 = Function.identity();
     } // end void chainingIdentityFunctionTests()
+
+    @Test
+    public void chainingComparatorTests() {
+
+        final Person mary = new Person("Mary", 28);
+        final Person john = new Person("John", 22);
+        final Person linda = new Person("Linda", 26);
+        final Person james = new Person("James", 32);
+
+        Comparator<Person> cmpName1 = (p1, p2) -> {
+            return p1.getName().compareTo(p2.getName());
+        };
+
+        assertTrue( (cmpName1.compare(mary, john)) > 0);
+        assertTrue( (cmpName1.compare(john, james)) > 0);
+        assertTrue( (cmpName1.compare(linda, john)) > 0);
+
+
+        java.util.function.Function<Person, String> getName = p -> p.getName();
+
+        Comparator<Person> cmpName2 = (p1, p2) -> {
+            String name1 = getName.apply(p1);
+            String name2 = getName.apply(p2);
+            return name1.compareTo(name2);
+        };
+
+        assertTrue( (cmpName2.compare(mary, john)) > 0);
+        assertTrue( (cmpName2.compare(john, james)) > 0);
+        assertTrue( (cmpName2.compare(linda, john)) > 0);
+
+        Comparator<Person> cmpName3 = Comparator.comparing(getName);
+
+        assertTrue( (cmpName3.compare(mary, john)) > 0);
+        assertTrue( (cmpName3.compare(john, james)) > 0);
+        assertTrue( (cmpName3.compare(linda, john)) > 0);
+
+    } // end void chainingComparatorTests()
 } // end class ChainingTests

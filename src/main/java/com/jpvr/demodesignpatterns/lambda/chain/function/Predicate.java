@@ -22,4 +22,4 @@ public interface Predicate<T> {
 
         return (T t) -> !this.test(t);
     } // end Predicate<T> negate()
-} // end interface Predicate
+} // end interface Predicate<T>

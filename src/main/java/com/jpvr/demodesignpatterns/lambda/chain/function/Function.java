@@ -33,4 +33,4 @@ public interface Function<T, R> {
 
         return t -> t;
     } // end Function<T, T> identity()
-} // end interface Function
+} // end interface Function<T, R>
