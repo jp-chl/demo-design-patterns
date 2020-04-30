@@ -50,7 +50,7 @@ public class FactoryTests {
         final Factory<Circle> factory = Circle::new;
 
         final int numCircles = 5;
-        List<Circle> circles = factory.createInstances(numCircles);
+        List<Circle> circles = factory.createManyInstancesAsList(numCircles);
 
         Assertions.assertNotNull(circles);
         assertEquals(numCircles, circles.size());
@@ -59,5 +59,16 @@ public class FactoryTests {
         System.out.println(numCircles + " circles : " + circles);
     } // end void whenUsingCustomSupplierFactory_thenCreateManyObjects()
 
+    @Test
+    public void whenUsingGenericSupplierFactory_thenCreateCustomObjects() {
+
+        final Factory<Circle> factory = Factory.createFactory(
+                Circle::new, //color -> new Circle(color),
+                Color.RED);
+
+        final Circle redCircle = factory.newInstance();
+
+        assertEquals(Color.RED, redCircle.getColor());
+    } // end void whenUsingGenericSupplierFactory_thenCreateCustomObjects()
 
 } // end class FactoryTests
