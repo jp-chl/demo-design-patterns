@@ -46,8 +46,7 @@ public class FactoryTests {
     @Test
     public void whenUsingCustomSupplierFactory_thenCreateManyObjects() {
 
-        //final Factory<Circle> factory = () -> new Circle();
-        final Factory<Circle> factory = Circle::new;
+        final Factory<Circle> factory = Factory.createCircleFactory();
 
         final int numCircles = 5;
         List<Circle> circles = factory.createManyInstancesAsList(numCircles);
@@ -62,13 +61,50 @@ public class FactoryTests {
     @Test
     public void whenUsingGenericSupplierFactory_thenCreateCustomObjects() {
 
-        final Factory<Circle> factory = Factory.createFactory(
+        // Factory with supplier
+        final Factory<Circle> factory1 = Factory.createFactory(Circle::new);
+
+        // Factory with function
+        final Factory<Circle> factory2 = Factory.createFactory(
                 Circle::new, //color -> new Circle(color),
                 Color.RED);
 
-        final Circle redCircle = factory.newInstance();
+        final Circle redCircle = factory2.newInstance();
 
         assertEquals(Color.RED, redCircle.getColor());
     } // end void whenUsingGenericSupplierFactory_thenCreateCustomObjects()
 
+    @Test
+    public void whenUsingGenericSupplierFactory_thenCreateSingletonObject() {
+
+        final Factory<Circle> singletonFactory1 = Factory.createSingletonFactory(Circle::new);
+        final Circle singletonCircle1 = singletonFactory1.newInstance();
+
+        final Factory<Circle> singletonFactory2 = Factory.createSingletonFactory(Circle::new);
+        final Circle singletonCircle2 = singletonFactory2.newInstance();
+
+        assertEquals(singletonCircle1, singletonCircle2);
+    } // end void whenUsingGenericSupplierFactory_thenCreateSingletonObject()
+
 } // end class FactoryTests
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

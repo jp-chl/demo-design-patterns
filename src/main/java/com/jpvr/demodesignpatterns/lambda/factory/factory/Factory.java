@@ -72,6 +72,17 @@ public interface Factory<T> extends Supplier<T> {
         return () -> constructor.apply(param);
     } // end static Factory<Circle> createColoredCircleFactory(Color color)
 
+    /**
+     * Singleton instance
+     * @param supplier
+     * @param <T>
+     * @return
+     */
+    static <T> Factory<T> createSingletonFactory(Supplier<T> supplier) {
+
+        T singleton = supplier.get();
+        return () -> singleton;
+    } // end static <T> Factory<T> createSingletonFactory(Supplier<T> supplier)
 
 } // end interface Factory<T> extends Supplier<T>
 
