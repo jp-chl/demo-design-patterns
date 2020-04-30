@@ -1,5 +1,6 @@
 package com.jpvr.demodesignpatterns.lambda.factory;
 
+import com.jpvr.demodesignpatterns.dp.creational.SingletonDb;
 import com.jpvr.demodesignpatterns.lambda.factory.factory.CircleFactory;
 import com.jpvr.demodesignpatterns.lambda.factory.factory.Factory;
 import com.jpvr.demodesignpatterns.lambda.factory.model.Circle;
@@ -90,6 +91,7 @@ public class FactoryTests {
 
 
 
+// Builder independent of the Factory
 
 
 
