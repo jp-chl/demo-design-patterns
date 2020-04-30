@@ -25,7 +25,7 @@ public interface Registry {
         // calling builder.register(label, factory) method
         consumer.accept(builder);
 
-        System.out.println("map = " + map);
+        //System.out.println("map = " + map);
 
         // final Factory<Rectangle> rectangleFactory = map.get(shape);
         //

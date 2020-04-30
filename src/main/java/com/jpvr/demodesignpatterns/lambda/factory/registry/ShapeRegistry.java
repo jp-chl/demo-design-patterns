@@ -7,12 +7,19 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
+/**
+ * Functional interface to create objects
+ * of type Shape
+ */
 public interface ShapeRegistry {
 
-    Factory<Shape> buildShapeFactory(String shape);
+    Factory<? extends Shape> buildShapeFactory(String shape);
 
-    public static ShapeRegistry createShapeRegistry(
-            Consumer<Builder<Shape>> consumer) {
+    /**
+     * This method encapsulates the creation with an inner HashMap.
+     * Not access allowed, not even with Reflection.
+     */
+    public static ShapeRegistry createShapeRegistry(Consumer<Builder<Shape>> consumer) {
 
         Map<String, Factory<Shape>> map = new HashMap<>();
 
@@ -21,9 +28,26 @@ public interface ShapeRegistry {
 
         consumer.accept(builder);
 
-        System.out.println("map = " + map);
-
         return shape -> map.get(shape);
     } // end static ShapeRegistry createShapeRegistry(Consumer<Builder<Shape>> consumer)
+
+    public static ShapeRegistry createShapeRegistryWithErrorHandling(
+            Consumer<Builder<Shape>> consumer) {
+
+        Map<String, Factory<Shape>> map = new HashMap<>();
+
+        Builder<Shape> builder  =
+                (map::put); // ((label, factory) -> map.put(label, factory));
+
+        consumer.accept(builder);
+
+        // As the Factory is an instance of the
+        // Supplier functional interface, we can
+        // return a lambda expression in the default case
+        return shape -> map.getOrDefault(shape,
+                () -> {throw new IllegalArgumentException("Unknown shape: " + shape);});
+
+
+    } // end static ShapeRegistry createShapeRegistryWithErrorHandling(Consumer<Builder<Shape>> consumer)
 
 } // end interface ShapeRegistry

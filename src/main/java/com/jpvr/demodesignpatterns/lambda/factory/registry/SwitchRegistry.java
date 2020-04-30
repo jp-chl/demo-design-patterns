@@ -6,6 +6,10 @@ import com.jpvr.demodesignpatterns.lambda.factory.model.Shape;
 import com.jpvr.demodesignpatterns.lambda.factory.model.Square;
 import com.jpvr.demodesignpatterns.lambda.factory.model.Triangle;
 
+/**
+ * Factory as a class.
+ * Check improved version as a Functional interface (@see ShapeRegistry)
+ */
 public class SwitchRegistry {
 
     public Factory<? extends Shape> buildShapeFactory(String shape) {

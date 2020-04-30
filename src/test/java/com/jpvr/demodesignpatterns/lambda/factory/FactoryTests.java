@@ -78,13 +78,12 @@ public class FactoryTests {
     @Test
     public void whenUsingGenericSupplierFactory_thenCreateSingletonObject() {
 
-        final Factory<Circle> singletonFactory1 = Factory.createSingletonFactory(Circle::new);
-        final Circle singletonCircle1 = singletonFactory1.newInstance();
+        final Factory<Circle> singletonFactory = Factory.createSingletonFactory(Circle::new);
 
-        final Factory<Circle> singletonFactory2 = Factory.createSingletonFactory(Circle::new);
-        final Circle singletonCircle2 = singletonFactory2.newInstance();
+        final Circle circle1 = singletonFactory.newInstance();//.get();
+        final Circle circle2 = singletonFactory.newInstance();//.get();
 
-        assertEquals(singletonCircle1, singletonCircle2);
+        assertEquals(circle1, circle2);
     } // end void whenUsingGenericSupplierFactory_thenCreateSingletonObject()
 
 } // end class FactoryTests
