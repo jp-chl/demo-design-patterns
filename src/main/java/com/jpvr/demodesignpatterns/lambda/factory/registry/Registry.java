@@ -8,12 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
 
-public class Registry {
+public interface Registry {
 
-    Factory<Shape> buildShapeFactory(String shape) {
-
-        return null;
-    } // end Factory<Shape> buildShapeFactory(String shape)
+    Factory<? extends Shape> buildShapeFactory(String shape);
 
     public static Registry createRegistry(Consumer<Builder<Rectangle>> consumer) {
 
@@ -30,6 +27,9 @@ public class Registry {
 
         System.out.println("map = " + map);
 
-        return null;
+        // final Factory<Rectangle> rectangleFactory = map.get(shape);
+        //
+        // buildShapeFactory abstract interface method return type required
+        return shape -> map.get(shape);
     } // end static Registry createRegistry(Consumer<Builder<Rectangle>> consumer)
 } // end class Registry
