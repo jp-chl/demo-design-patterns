@@ -5,15 +5,13 @@ import com.jpvr.demodesignpatterns.lambda.factory.model.Rectangle;
 import com.jpvr.demodesignpatterns.lambda.factory.model.Shape;
 import com.jpvr.demodesignpatterns.lambda.factory.model.Square;
 import com.jpvr.demodesignpatterns.lambda.factory.model.Triangle;
-import com.jpvr.demodesignpatterns.lambda.factory.registry.Builder;
-import com.jpvr.demodesignpatterns.lambda.factory.registry.Registry;
-import com.jpvr.demodesignpatterns.lambda.factory.registry.ShapeRegistry;
-import com.jpvr.demodesignpatterns.lambda.factory.registry.SwitchRegistry;
+import com.jpvr.demodesignpatterns.lambda.factory.registry.*;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
 
 import java.util.function.Consumer;
+import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -135,4 +133,42 @@ public class BuilderTests {
             buildSquareFactory.newInstance();
         });
     } // end void shouldCreateShapesFactoryWithErrorHandling()
+
+    @SuppressWarnings("unchecked")
+    @Test
+    public void shouldCreateShapesFactoryWithErrorHandlingAsParameter() {
+
+        final Consumer<Builder<Shape>> consumer1 =
+                builder -> builder.register("rectangle", Rectangle::new);
+        final Consumer<Builder<Shape>> consumer2 =
+                builder -> builder.register("triangle", Triangle::new);
+
+        final Consumer<Builder<Shape>> consumer = consumer1.andThen(consumer2);
+
+        final GenericRegistry<Shape> registry1 = GenericRegistry.createRegistry(consumer);
+        final Factory<Square> buildSquareFactory1 = (Factory<Square>) registry1.buildShapeFactory("square");
+
+        Assertions.assertThrows(IllegalArgumentException.class, buildSquareFactory1::newInstance);
+
+
+        // Now with error function as a parameter of the registry
+        final String ERROR_EXCEPTION_PREFIX = "Not a valid shape: ";
+        final Function<String, Factory<Shape>> stringFactoryFunction = s -> {
+
+            throw new IllegalArgumentException(ERROR_EXCEPTION_PREFIX + s);
+        };
+        final GenericRegistry<Shape> registry2 = GenericRegistry.createRegistry(consumer, stringFactoryFunction);
+
+        final String SQUARE_SHAPE = "square";
+        try {
+
+            final Factory<Square> buildSquareFactory2 = (Factory<Square>) registry2.buildShapeFactory(SQUARE_SHAPE);
+        } catch (IllegalArgumentException e) {
+
+            assertEquals(ERROR_EXCEPTION_PREFIX + SQUARE_SHAPE, e.getMessage());
+        }
+
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> {registry2.buildShapeFactory(SQUARE_SHAPE);} );
+    } // end void shouldCreateShapesFactoryWithErrorHandlingAsParameter()
 } // end class BuilderTests

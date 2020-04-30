@@ -46,8 +46,6 @@ public interface ShapeRegistry {
         // return a lambda expression in the default case
         return shape -> map.getOrDefault(shape,
                 () -> {throw new IllegalArgumentException("Unknown shape: " + shape);});
-
-
     } // end static ShapeRegistry createShapeRegistryWithErrorHandling(Consumer<Builder<Shape>> consumer)
 
 } // end interface ShapeRegistry
