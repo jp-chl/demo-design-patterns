@@ -19,15 +19,24 @@ public class VisitorTests {
         // Consumer is a function that takes objects
         // and return R (String in this case)
         Consumer<VisitorBuilder<String>> consumer = Visitor
-                        .<String>forType(Car.class)
-                        .execute( c -> "Visiting car: " + c);
+                .<String>forType(Car.class).execute( c -> "Visiting car: " + c)
+                .forType(Engine.class).execute(e -> "Visiting engine: " + e)
+                .forType(Body.class).execute(b -> "Visiting engine: " + b);
 
         Visitor<String> visitor = Visitor.of(consumer);
+
+
+        String visitedEngine = visitor.visit(engine);
+        System.out.println("visitedEngine = " + visitedEngine);
 
         String visitedCard = visitor.visit(car);
         System.out.println("visitedCard = " + visitedCard);
 
-//        visitor.visit(engine);
+        String visitedBody = visitor.visit(body);
+        System.out.println("visitedBody = " + visitedBody);
+
+
+
 //        visitor.visit(body);
     } // end
 } // end class VisitorTests
