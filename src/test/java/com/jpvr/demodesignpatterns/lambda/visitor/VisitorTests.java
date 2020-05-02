@@ -22,16 +22,7 @@ public class VisitorTests {
                 Visitor.<Car, String>forType(Car.class).execute((Car c) -> "Visiting car: " + c)
                         .forType(Engine.class).execute((Engine e) -> "Visiting engine: " + e)
                         .forType(Body.class).execute((Body b) -> "Visiting engine: " + b);
-
-
-//        Visitor.<Car, String>forType(Car.class).execute((Car c) -> "Visiting car: " + c)
-//                .forType(Engine.class).execute((Engine e) -> "Visiting engine: " + e)
-//                .forType(Body.class).execute((Body b) -> "Visiting body: " + b);
-
-//        Consumer<VisitorBuilder<String>> consumer2 =
-//                Visitor.<Car, String>forType(Car.class).execute((Car c) -> "Visiting car: " + c)
-//                        .forType(Engine.class).execute((Engine e) -> "Visiting engine: " + e)
-//                        .forType(Body.class).execute((Body b) -> "Visiting body: " + b);
+        
 
         Visitor<String> visitor = Visitor.of(consumer);
 
