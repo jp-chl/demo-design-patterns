@@ -1,9 +1,5 @@
 package com.jpvr.demodesignpatterns.lambda.visitor;
 
-import com.jpvr.demodesignpatterns.dp.behavioral.command.Command;
-import com.jpvr.demodesignpatterns.lambda.visitor.model.Car;
-import com.jpvr.demodesignpatterns.lambda.visitor.model.Engine;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Consumer;
@@ -30,9 +26,17 @@ public interface Visitor<R> {
 
         Map<Class<?>, Function<Object, R>> registry = new HashMap<>();
 
-        // consumer.accept((registry::put)); // less "readable" version
-        consumer.accept(
-                ((type, function) -> registry.put(type, function)));
+        VisitorBuilder<R> visitorBuilder = new VisitorBuilder<R>() {
+            @Override
+            public <T> void register(Class<T> type, Function<T, R> function) {
+
+                registry.put(type, function.compose(o -> type.cast(o)));
+                //registry.put(type, function.compose(type::cast));
+            } // end void register(Class<T> type, Function<T, R> function)
+        }; // end VisitorBuilder<R> visitorBuilder
+
+
+        consumer.accept(visitorBuilder);
 
         System.out.println("registry = " + registry.keySet());
 
@@ -48,7 +52,7 @@ public interface Visitor<R> {
      * @param <R>
      * @return
      */
-    static <R> X<R> forType(Class<?> type) {
+    static <T, R> X<T, R> forType(Class<T> type) {
 
         return () -> type;
     } // end static X forType(Class<?> type)
@@ -58,11 +62,11 @@ public interface Visitor<R> {
      * It doesn't allow more methods (so check interface Y)
      * @param <R>
      */
-    interface X<R> {
+    interface X<T, R> {
 
-        Class<?> type();
+        Class<T> type();
 
-        default Y<R> execute(Function<Object, R> function) {
+        default Y<R> execute(Function<T, R> function) {
 
             return visitorBuilder -> visitorBuilder.register(type(), function);
         } // end Consumer<VisitorBuilder<R>> execute(Function<Object, R> function)
@@ -76,7 +80,7 @@ public interface Visitor<R> {
         /**
          * Returns Z to chain consumer calls
          */
-        default Z<R> forType(Class<?> type) {
+        default <T> Z<T, R> forType(Class<T> type) {
 
             return index -> (index == 0) ? this : type;
         } // end X<R> forType(Class<?> type)
@@ -93,23 +97,22 @@ public interface Visitor<R> {
     /**
      *
      */
-    interface Z<R> {
+    interface Z<T, R> {
 
         Object get(int index);
 
-        default Class<?> type() {
-            return (Class<?>)get(1);
+        default Class<T> type() {
+            return (Class<T>)get(1);
         }
 
         default Y<R> previousConsumer() {
             return (Y<R>)get(0);
         }
 
-        default Y<R> execute(Function<Object, R> function) {
+        default Y<R> execute(Function<T, R> function) {
 
             return previousConsumer().andThen(
-                visitorBuilder ->
-                    visitorBuilder.register(type(), function));
+                visitorBuilder -> visitorBuilder.register(type(), function));
         } // end Y<R> execute(Function<Object, R> function)
     } // end inner interface Z<R>
 } // end interface Visitor
