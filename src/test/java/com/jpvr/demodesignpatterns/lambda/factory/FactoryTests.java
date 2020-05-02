@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Assertions;
 
 import java.awt.*;
 import java.util.List;
+import java.util.function.Supplier;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -86,6 +87,13 @@ public class FactoryTests {
         assertEquals(circle1, circle2);
     } // end void whenUsingGenericSupplierFactory_thenCreateSingletonObject()
 
+    @Test
+    public void test() {
+
+        final Supplier<Circle> factory = () -> new Circle();
+        final Circle circle = factory.get();
+        System.out.println("circle = " + circle);
+    }
 } // end class FactoryTests
 
 
